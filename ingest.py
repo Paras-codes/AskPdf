@@ -32,4 +32,4 @@ def ingest_pdfs(file_paths: list[str], persist_dir=PERSIST_DIR):
         total_chunks += len(chunks)
 
     vectordb.persist()
-    return {"status": "success", "total_chunks": total_chunks}
+    return { "total_chunks": total_chunks}
