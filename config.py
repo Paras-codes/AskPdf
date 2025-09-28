@@ -6,6 +6,8 @@ load_dotenv()
 # LLM & Embeddings
 GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-1.5-flash")
 EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "models/embedding-001")
+HUGGINGFACE_TOKEN =  os.getenv("HUGGINGFACEHUB_ACCESS_TOKEN")
+print(HUGGINGFACE_TOKEN)
 
 # Directories
 UPLOAD_DIR = os.getenv("UPLOAD_DIR", "uploaded_files")

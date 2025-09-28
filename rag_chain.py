@@ -2,6 +2,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmb
 from langchain_community.vectorstores import Chroma
 from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_huggingface import HuggingFaceEndpointEmbeddings
 from dotenv import load_dotenv
 import os
@@ -55,8 +56,12 @@ def get_vectordb():
         # Initialize embeddings model
         embeddings = HuggingFaceEndpointEmbeddings(
             repo_id="sentence-transformers/all-MiniLM-L6-v2",
-            task="feature-extraction"
+            task="feature-extraction",
+            huggingfacehub_api_token=os.getenv("HUGGINGFACEHUB_ACCESS_TOKEN")
         )
+        #  embeddings = HuggingFaceEmbeddings(
+        #         model_name="sentence-transformers/all-MiniLM-L6-v2"
+        #     )
     except Exception as e:
         raise ModelError(
             message=f"Failed to initialize embeddings model: {str(e)}",

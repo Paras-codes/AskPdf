@@ -1,6 +1,7 @@
 from langchain_community.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEndpointEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import Chroma
 from dotenv import load_dotenv
 import os
@@ -60,8 +61,13 @@ async def ingest_pdfs(file_paths: list[str], persist_dir=PERSIST_DIR):
         try:
             embeddings = HuggingFaceEndpointEmbeddings(
                 repo_id="sentence-transformers/all-MiniLM-L6-v2",
-                task="feature-extraction"
+                task="feature-extraction",
+                huggingfacehub_api_token=os.getenv("HUGGINGFACEHUB_ACCESS_TOKEN")
             )
+            # from langchain_community.embeddings import HuggingFaceEmbeddings
+            #  embeddings = HuggingFaceEmbeddings(
+            #     model_name="sentence-transformers/all-MiniLM-L6-v2"
+            # )
         except Exception as e:
             raise ModelError(
                 message=f"Failed to initialize embeddings model: {str(e)}",
