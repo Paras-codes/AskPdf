@@ -12,11 +12,25 @@ from error_handler import (
     ValidationError, ErrorCode, validate_file_type, validate_file_size,
     setup_logging
 )
+from fastapi.middleware.cors import CORSMiddleware
+
+
 
 # Initialize logging
 setup_logging()
 
 app = FastAPI(title="RAG System with Gemini")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],   # or specify your frontend origin
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
 
 # Custom exception handler
 @app.exception_handler(AskPdfBaseException)

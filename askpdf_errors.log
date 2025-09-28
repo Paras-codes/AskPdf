@@ -21,3 +21,10 @@
 2025-09-27 17:18:32,647 - error_handler - ERROR - AskPdf Error: {'timestamp': '2025-09-27T17:18:32.647163', 'error_code': 'DB_OPERATION_ERROR', 'message': "Unexpected error during bulk deletion: object dict can't be used in 'await' expression", 'details': {}, 'original_error': "object dict can't be used in 'await' expression", 'traceback': 'Traceback (most recent call last):\n  File "C:\\Users\\paras\\Desktop\\New folder\\main.py", line 241, in delete_all_docs\n    all_docs = await vectordb.get()\n               ^^^^^^^^^^^^^^^^^^^^\nTypeError: object dict can\'t be used in \'await\' expression\n'}
 2025-09-27 17:19:44,542 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
 2025-09-27 17:21:45,629 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-09-27 18:28:05,350 - fastapi - ERROR - Form data requires "python-multipart" to be installed. 
+You can install "python-multipart" with: 
+
+pip install python-multipart
+
+2025-09-27 19:40:10,724 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-09-28 14:40:12,603 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
